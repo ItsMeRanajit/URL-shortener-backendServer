@@ -1,0 +1,6 @@
+--> also keep track of total visits/clickst on the url
+
+routes---
+post/url -- creating url
+get/:id -- redirects user to original url
+get/url/analytics/:id -- returns the click for the provided short id

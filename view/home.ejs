@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL shortner</title>
+  </head>
+  <body>
+    <h1>URL SHORTENER</h1>
+    <div>
+      <form action="/url" method="POST">
+        <!--  method is post and our post path was /url/ -->
+        <label for="">Enter your URL</label>
+        <input type="text" placeholder="http://example.com" name="url" />
+        <!-- name is url bcz in controllers we have body.url measn the data is in url. so we need to pass as name with url.  -->
+        <button type="submit">Generate</button>
+        <% if (locals.id) { %>
+        <p>URL Generated :http://localhost:8001/url/<%=id%></p>
+        <% } %>
+      </form>
+    </div>
+    <div>
+      <% if (locals.urls) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Sl. no.</th>
+            <th>Redirect URL</th>
+            <th>Short id</th>
+            <th>Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% urls.forEach((element, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= element.redirectUrl%></td>
+            <td><%= element.shortId%></td>
+            <td><%= element.visitHistory.length %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </body>
+</html>
